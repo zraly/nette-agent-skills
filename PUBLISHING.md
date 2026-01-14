@@ -16,9 +16,9 @@ This document describes how to publish this repository to GitHub.
 cd /tmp/nette-ai-skills
 
 # Create a new GitHub repository
-gh repo create nette/ai-skills \
+gh repo create zraly/nette-ai-skills \
   --public \
-  --description "AI agent skills for Nette Framework - supports Antigravity, Claude Code, and other AI coding assistants" \
+  --description "Universal AI agent skills for Nette Framework - supports Antigravity, Claude Code, and other AI coding assistants" \
   --source=. \
   --remote=origin \
   --push

@@ -6,8 +6,11 @@ AI agent skills for [Nette Framework](https://nette.org) development. These skil
 
 ## 🤖 Supported AI Assistants
 
+The skills in this repository use a universal format compatible with various AI coding assistants:
+
 - **[Antigravity](https://agentskills.io/)** - Google's AI coding assistant
 - **[Claude Code](https://claude.com/product/claude-code)** - Anthropic's AI coding assistant
+- **Other agents** - Any AI assistant that supports the Agent Skills standard (SKILL.md with YAML frontmatter)
 
 ## 📦 Available Skills
 
@@ -28,108 +31,100 @@ AI agent skills for [Nette Framework](https://nette.org) development. These skil
 - **latte-templates** - Latte templates, syntax, tags, filters
 - **frontend-development** - Frontend development with Vite, SCSS, JavaScript
 
-## 🚀 Installation
+## 🚀 Quick Start
 
-### Antigravity
-
-Clone this repository into your Antigravity skills directory:
+### For Antigravity
 
 ```bash
+# Global installation (recommended)
 git clone https://github.com/zraly/nette-ai-skills ~/.gemini/antigravity/skills/nette
-```
 
-Or for a specific project only:
-
-```bash
+# Or project-specific
 git clone https://github.com/zraly/nette-ai-skills .agent/skills/nette
 ```
 
-**Update skills:**
+See [ANTIGRAVITY.md](ANTIGRAVITY.md) for detailed instructions.
 
-```bash
-cd ~/.gemini/antigravity/skills/nette
-git pull
-```
-
-### Claude Code
-
-Add the Nette marketplace to Claude Code:
+### For Claude Code
 
 ```
 /plugin marketplace add nette/claude-code
-```
-
-Then install the plugin:
-
-```
 /plugin install nette@nette
 ```
 
-For Nette Framework contributors:
+See [CLAUDE-CODE.md](CLAUDE-CODE.md) for detailed instructions.
+
+### For Other AI Assistants
+
+The skills follow the universal Agent Skills format:
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/zraly/nette-ai-skills
+   ```
+
+2. **Copy or symlink the `skills/` folder** to your AI assistant's skills directory
+
+3. **Each skill contains:**
+   - `SKILL.md` with YAML frontmatter (name, description)
+   - Optional additional `.md` files with detailed documentation
+
+## 📖 Skill Format
+
+Each skill uses a standard format compatible with multiple AI assistants:
+
+```yaml
+---
+name: skill-name
+description: What this skill does and when to use it
+---
+
+# Skill Content
+
+Instructions and documentation...
+```
+
+### Repository Structure
 
 ```
-/plugin install nette-dev@nette
-```
-
-## 📚 Usage
-
-### Antigravity
-
-Skills are automatically available in all conversations. The agent will automatically select relevant skills based on the task context.
-
-You can also mention a skill explicitly:
-- "Use the nette-forms skill to create a contact form"
-- "Follow php-coding-standards when writing this class"
-
-### Claude Code
-
-Skills are automatically loaded when working with Nette projects. You can invoke skills using the `/` prefix:
-
-```
-/nette-forms
-/php-coding-standards
-/commit-messages
+nette-ai-skills/
+├── skills/                    # Universal skills (work with any AI assistant)
+│   ├── commit-messages/
+│   │   └── SKILL.md
+│   ├── nette-forms/
+│   │   ├── SKILL.md
+│   │   ├── controls.md
+│   │   ├── validation.md
+│   │   └── rendering.md
+│   └── ...
+├── claude-code/              # Claude Code specific plugins
+│   └── plugins/
+│       ├── nette/
+│       └── nette-dev/
+├── ANTIGRAVITY.md           # Antigravity installation guide
+├── CLAUDE-CODE.md           # Claude Code installation guide
+└── README.md                # This file
 ```
 
 ## 🔄 Keeping Skills Updated
 
-This repository automatically syncs with [nette/claude-code](https://github.com/nette/claude-code) to stay current with the latest Nette conventions and best practices.
+### Automatic Updates
 
-### Automatic Sync (GitHub Actions)
+This repository automatically syncs daily with [nette/claude-code](https://github.com/nette/claude-code) via GitHub Actions.
 
-Skills are automatically synced daily via GitHub Actions. You just need to pull the latest changes:
+**Update your local copy:**
 
 ```bash
-# Antigravity users
-cd ~/.gemini/antigravity/skills/nette
+cd ~/.gemini/antigravity/skills/nette  # or wherever you installed
 git pull
 ```
 
 ### Manual Sync
 
-To manually sync skills from the source repository:
+Repository maintainers can manually sync:
 
 ```bash
 ./sync-skills.sh
-```
-
-## 📖 Documentation
-
-Each skill contains:
-- `SKILL.md` - Main instructions for the AI agent (required)
-- Additional `.md` files - Detailed documentation and references (optional)
-
-### Skill Structure
-
-```
-antigravity/skills/
-├── nette-forms/
-│   ├── SKILL.md           # Main skill instructions
-│   ├── controls.md        # Form controls reference
-│   ├── validation.md      # Validation rules
-│   └── rendering.md       # Rendering patterns
-└── php-coding-standards/
-    └── SKILL.md
 ```
 
 ## 🤝 Contributing

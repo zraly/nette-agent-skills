@@ -36,7 +36,7 @@ git clone https://github.com/zraly/nette-ai-skills nette
 After installation, you can verify the skills are available:
 
 ```bash
-ls -la ~/.gemini/antigravity/skills/nette/antigravity/skills/
+ls -la ~/.gemini/antigravity/skills/nette/skills/
 ```
 
 You should see folders like:
@@ -97,16 +97,15 @@ git pull
 ~/.gemini/antigravity/skills/nette/
 ├── README.md
 ├── ANTIGRAVITY.md (this file)
-└── antigravity/
-    └── skills/
-        ├── commit-messages/
-        │   └── SKILL.md
-        ├── nette-forms/
-        │   ├── SKILL.md
-        │   ├── controls.md
-        │   ├── validation.md
-        │   └── rendering.md
-        └── ... (other skills)
+└── skills/
+    ├── commit-messages/
+    │   └── SKILL.md
+    ├── nette-forms/
+    │   ├── SKILL.md
+    │   ├── controls.md
+    │   ├── validation.md
+    │   └── rendering.md
+    └── ... (other skills)
 ```
 
 ## Skill Structure
@@ -132,7 +131,7 @@ Each skill folder contains:
 
 2. Ensure SKILL.md files have proper frontmatter:
    ```bash
-   head -5 ~/.gemini/antigravity/skills/nette/antigravity/skills/nette-forms/SKILL.md
+   head -5 ~/.gemini/antigravity/skills/nette/skills/nette-forms/SKILL.md
    ```
 
 3. Restart your Antigravity session

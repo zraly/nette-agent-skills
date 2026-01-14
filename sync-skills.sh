@@ -1,0 +1,70 @@
+#!/bin/bash
+set -e
+
+# Sync script for Nette AI Skills
+# Synchronizes skills from nette/claude-code to this repo
+
+REPO_URL="https://github.com/nette/claude-code"
+TMP_DIR=$(mktemp -d)
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+echo "🔄 Syncing Nette skills from $REPO_URL..."
+
+# Clone the source repository
+git clone --depth 1 "$REPO_URL" "$TMP_DIR"
+
+# Sync Antigravity skills
+echo "📦 Syncing Antigravity skills..."
+ANTIGRAVITY_DIR="$SCRIPT_DIR/antigravity/skills"
+mkdir -p "$ANTIGRAVITY_DIR"
+
+# List of skills to sync
+NETTE_DEV_SKILLS=(
+	"commit-messages"
+	"php-coding-standards"
+	"php-doc"
+)
+
+NETTE_SKILLS=(
+	"frontend-development"
+	"latte-templates"
+	"neon-format"
+	"nette-architecture"
+	"nette-configuration"
+	"nette-database"
+	"nette-forms"
+	"nette-schema"
+	"nette-testing"
+	"nette-utils"
+)
+
+# Sync nette-dev skills
+for skill in "${NETTE_DEV_SKILLS[@]}"; do
+	echo "  • $skill"
+	rm -rf "$ANTIGRAVITY_DIR/$skill"
+	mkdir -p "$ANTIGRAVITY_DIR/$skill"
+	cp -r "$TMP_DIR/plugins/nette-dev/skills/$skill/"* "$ANTIGRAVITY_DIR/$skill/" 2>/dev/null || true
+done
+
+# Sync nette skills
+for skill in "${NETTE_SKILLS[@]}"; do
+	echo "  • $skill"
+	rm -rf "$ANTIGRAVITY_DIR/$skill"
+	mkdir -p "$ANTIGRAVITY_DIR/$skill"
+	cp -r "$TMP_DIR/plugins/nette/skills/$skill/"* "$ANTIGRAVITY_DIR/$skill/" 2>/dev/null || true
+done
+
+# Sync Claude Code plugins (keep original structure)
+echo "📦 Syncing Claude Code plugins..."
+CLAUDE_DIR="$SCRIPT_DIR/claude-code/plugins"
+mkdir -p "$CLAUDE_DIR"
+cp -r "$TMP_DIR/plugins/"* "$CLAUDE_DIR/"
+
+# Cleanup
+rm -rf "$TMP_DIR"
+
+echo "✅ Sync completed!"
+echo ""
+echo "Synced skills:"
+echo "  - Antigravity: $(ls -1 "$ANTIGRAVITY_DIR" | wc -l | tr -d ' ') skills"
+echo "  - Claude Code: $(ls -1 "$CLAUDE_DIR" | wc -l | tr -d ' ') plugins"

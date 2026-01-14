@@ -1,0 +1,20 @@
+{
+	"description": "Validate Latte templates and NEON files",
+	"hooks": {
+		"PostToolUse": [
+			{
+				"matcher": "Edit|Write",
+				"hooks": [
+					{
+						"type": "command",
+						"command": "php ${CLAUDE_PLUGIN_ROOT}/hooks/lint-latte.php"
+					},
+					{
+						"type": "command",
+						"command": "php ${CLAUDE_PLUGIN_ROOT}/hooks/lint-neon.php"
+					}
+				]
+			}
+		]
+	}
+}

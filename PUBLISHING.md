@@ -40,7 +40,7 @@ gh repo create nette/ai-skills \
 cd /tmp/nette-ai-skills
 
 # Add GitHub remote
-git remote add origin https://github.com/nette/ai-skills.git
+git remote add origin https://github.com/zraly/nette-ai-skills.git
 
 # Push to GitHub
 git push -u origin main
@@ -91,10 +91,10 @@ After publishing, users can install with:
 
 ```bash
 # Global installation
-git clone https://github.com/nette/ai-skills ~/.gemini/antigravity/skills/nette
+git clone https://github.com/zraly/nette-ai-skills ~/.gemini/antigravity/skills/nette
 
 # Project-specific
-git clone https://github.com/nette/ai-skills .agent/skills/nette
+git clone https://github.com/zraly/nette-ai-skills .agent/skills/nette
 ```
 
 ### Claude Code
@@ -126,11 +126,11 @@ git push
 ## Monitoring
 
 Check the sync status:
-- GitHub Actions tab: https://github.com/nette/ai-skills/actions
+- GitHub Actions tab: https://github.com/zraly/nette-ai-skills/actions
 - Email notifications for failed workflows
 
 ## Support
 
-- Issues: https://github.com/nette/ai-skills/issues
+- Issues: https://github.com/zraly/nette-ai-skills/issues
 - Source: https://github.com/nette/claude-code
 - Nette Forum: https://forum.nette.org

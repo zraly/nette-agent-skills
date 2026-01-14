@@ -17,7 +17,7 @@ Skills installed globally work across all your projects:
 
 ```bash
 cd ~/.gemini/antigravity/skills
-git clone https://github.com/nette/ai-skills nette
+git clone https://github.com/zraly/nette-ai-skills nette
 ```
 
 ### Project-Specific Installation
@@ -28,7 +28,7 @@ For project-specific skills:
 cd your-project
 mkdir -p .agent/skills
 cd .agent/skills
-git clone https://github.com/nette/ai-skills nette
+git clone https://github.com/zraly/nette-ai-skills nette
 ```
 
 ## Verification
@@ -142,7 +142,7 @@ Each skill folder contains:
 ```bash
 rm -rf ~/.gemini/antigravity/skills/nette
 cd ~/.gemini/antigravity/skills
-git clone https://github.com/nette/ai-skills nette
+git clone https://github.com/zraly/nette-ai-skills nette
 ```
 
 ## More Information

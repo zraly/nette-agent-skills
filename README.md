@@ -35,13 +35,13 @@ AI agent skills for [Nette Framework](https://nette.org) development. These skil
 Clone this repository into your Antigravity skills directory:
 
 ```bash
-git clone https://github.com/nette/ai-skills ~/.gemini/antigravity/skills/nette
+git clone https://github.com/zraly/nette-ai-skills ~/.gemini/antigravity/skills/nette
 ```
 
 Or for a specific project only:
 
 ```bash
-git clone https://github.com/nette/ai-skills .agent/skills/nette
+git clone https://github.com/zraly/nette-ai-skills .agent/skills/nette
 ```
 
 **Update skills:**

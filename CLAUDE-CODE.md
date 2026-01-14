@@ -25,7 +25,7 @@ If you want to use the plugins from this repository directly, you can symlink th
 
 ```bash
 # Clone this repository
-git clone https://github.com/nette/ai-skills ~/nette-ai-skills
+git clone https://github.com/zraly/nette-ai-skills ~/nette-ai-skills
 
 # Create Claude Code plugins directory if it doesn't exist
 mkdir -p ~/.claude/plugins

@@ -11,6 +11,10 @@ on:
     paths:
       - 'sync-skills.sh'
 
+concurrency:
+  group: sync-skills
+  cancel-in-progress: true
+
 jobs:
   sync:
     runs-on: ubuntu-latest

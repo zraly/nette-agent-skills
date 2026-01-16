@@ -11,11 +11,25 @@ Skills are reusable packages of knowledge that extend what the AI agent can do. 
 
 ## Installation
 
-### Global Installation (Recommended)
+### Option 1: OpenSkills (Recommended)
+
+The easiest way to install Nette skills:
+
+```bash
+# Install OpenSkills CLI
+npm install -g openskills
+
+# Install Nette skills
+openskills install zraly/nette-ai-skills
+```
+
+OpenSkills automatically configures skills for Antigravity and keeps them updated.
+
+### Option 2: Manual Installation
 
 Skills must be placed directly in `~/.gemini/antigravity/skills/` for Antigravity to detect them automatically.
 
-**Option A: Using symlinks (recommended - easy to update)**
+**Using symlinks (recommended - easy to update):**
 
 ```bash
 # Clone the repository
@@ -26,7 +40,7 @@ cd ~/.gemini/antigravity/skills
 ln -s ~/nette-ai-skills/skills/* .
 ```
 
-**Option B: Direct copy**
+**Direct copy:**
 
 ```bash
 # Clone and copy skills directly
@@ -107,7 +121,13 @@ You: Use the nette-database skill to create a query for all active users
 
 To get the latest skills and best practices:
 
-**If using symlinks (Option A):**
+**If using OpenSkills:**
+
+```bash
+openskills update zraly/nette-ai-skills
+```
+
+**If using symlinks:**
 
 ```bash
 cd ~/nette-ai-skills
@@ -115,7 +135,7 @@ git pull
 # Symlinks automatically point to updated files
 ```
 
-**If using direct copy (Option B):**
+**If using direct copy:**
 
 ```bash
 # Re-download and copy

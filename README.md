@@ -34,59 +34,31 @@ The skills in this repository use a universal format compatible with various AI 
 
 ## 🚀 Quick Start
 
-### For Antigravity
+### Recommended: OpenSkills (Works with all AI assistants)
 
-**Important:** Skills must be placed directly in `~/.gemini/antigravity/skills/`, not in subdirectories.
-
-```bash
-# Clone the repository
-git clone https://github.com/zraly/nette-ai-skills ~/nette-ai-skills
-
-# Create symlinks (recommended - easy to update)
-cd ~/.gemini/antigravity/skills
-ln -s ~/nette-ai-skills/skills/* .
-```
-
-See [ANTIGRAVITY.md](ANTIGRAVITY.md) for detailed instructions and alternative installation methods.
-
-### For Cursor
-
-Create a `.cursorrules` file in your project root that references the skills:
+The easiest way to install Nette skills for any AI coding assistant:
 
 ```bash
-# Clone to your project
-git clone https://github.com/zraly/nette-ai-skills .nette-skills
+# Install OpenSkills CLI
+npm install -g openskills
 
-# Then reference in .cursorrules (see CURSOR.md for details)
+# Install Nette skills
+openskills install zraly/nette-ai-skills
 ```
 
-See [CURSOR.md](CURSOR.md) for detailed instructions.
+OpenSkills automatically configures skills for Antigravity, Cursor, Windsurf, Aider, and other AI assistants.
 
-### For Claude Code
+**Learn more:** [OpenSkills Documentation](https://github.com/numman-ali/openskills)
 
-Use the official Nette plugin repository:
+### Manual Installation
 
-```
-/plugin marketplace add nette/claude-code
-/plugin install nette@nette
-```
+For detailed setup instructions for specific AI assistants:
 
-See https://github.com/nette/claude-code for details.
+- **[Antigravity](ANTIGRAVITY.md)** - Google's AI coding assistant
+- **[Cursor](CURSOR.md)** - AI-powered code editor
+- **[Claude Code](https://github.com/nette/claude-code)** - Use the official Nette plugin
 
-### For Other AI Assistants
-
-The skills follow a universal format:
-
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/zraly/nette-ai-skills
-   ```
-
-2. **Copy or symlink the `skills/` folder** to your AI assistant's skills directory
-
-3. **Each skill contains:**
-   - `SKILL.md` with YAML frontmatter (name, description)
-   - Optional additional `.md` files with detailed documentation
+Manual installation involves cloning this repository and symlinking the `skills/` folder to your AI assistant's skills directory.
 
 ## 📖 Skill Format
 
@@ -123,24 +95,24 @@ nette-ai-skills/
 
 ## 🔄 Keeping Skills Updated
 
-### Automatic Updates
-
-This repository automatically syncs daily with [nette/claude-code](https://github.com/nette/claude-code) via GitHub Actions.
-
-**Update your local copy:**
+### Using OpenSkills
 
 ```bash
-cd ~/.gemini/antigravity/skills/nette  # or wherever you installed
+openskills update zraly/nette-ai-skills
+```
+
+### Manual Installation
+
+If you installed manually using git clone:
+
+```bash
+cd ~/nette-ai-skills  # or wherever you cloned the repository
 git pull
 ```
 
-### Manual Sync
+### Source Synchronization
 
-Repository maintainers can manually sync:
-
-```bash
-./sync-skills.sh
-```
+This repository automatically syncs daily with [nette/claude-code](https://github.com/nette/claude-code) via GitHub Actions, ensuring you always have the latest Nette best practices.
 
 ## 🤝 Contributing
 

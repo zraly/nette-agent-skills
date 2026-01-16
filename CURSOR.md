@@ -8,7 +8,23 @@ Cursor automatically discovers and loads skills from designated directories. Ski
 
 ## Installation
 
-### Project-Level Installation (Recommended)
+### Option 1: OpenSkills (Recommended)
+
+The easiest way to install Nette skills:
+
+```bash
+# Install OpenSkills CLI
+npm install -g openskills
+
+# Install Nette skills
+openskills install zraly/nette-ai-skills
+```
+
+OpenSkills automatically configures skills for Cursor and keeps them updated.
+
+### Option 2: Manual Installation
+
+**Project-Level Installation:**
 
 Install skills for a specific Nette project:
 
@@ -23,7 +39,7 @@ cd .cursor/skills
 git clone https://github.com/zraly/nette-ai-skills nette
 ```
 
-### Global Installation
+**Global Installation:**
 
 Install skills globally for all your projects:
 
@@ -175,6 +191,14 @@ All 13 Nette skills are automatically available:
 ## Updating Skills
 
 To get the latest Nette conventions:
+
+**If using OpenSkills:**
+
+```bash
+openskills update zraly/nette-ai-skills
+```
+
+**If using manual installation:**
 
 ```bash
 # Project-level

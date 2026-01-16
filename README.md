@@ -1,6 +1,6 @@
-# Nette Skills for AI Coding Assistants
+# Nette Agent Skills
 
-AI agent skills for [Nette Framework](https://nette.org) development. These skills provide deep knowledge of Nette best practices, coding conventions, and framework APIs for various AI coding assistants.
+Agent skills for [Nette Framework](https://nette.org) development. These skills provide deep knowledge of Nette best practices, coding conventions, and framework APIs for AI coding assistants.
 
 **Source:** Skills are automatically synced from [nette/claude-code](https://github.com/nette/claude-code)
 
@@ -43,7 +43,7 @@ The easiest way to install Nette skills for any AI coding assistant:
 npm install -g openskills
 
 # Install Nette skills
-openskills install zraly/nette-ai-skills
+openskills install zraly/nette-agent-skills
 ```
 
 OpenSkills automatically configures skills for Antigravity, Cursor, Windsurf, Aider, and other AI assistants.
@@ -78,7 +78,7 @@ Instructions and documentation...
 ### Repository Structure
 
 ```
-nette-ai-skills/
+nette-agent-skills/
 ├── skills/                    # Universal skills (work with any AI assistant)
 │   ├── commit-messages/
 │   │   └── SKILL.md
@@ -98,7 +98,7 @@ nette-ai-skills/
 ### Using OpenSkills
 
 ```bash
-openskills update zraly/nette-ai-skills
+openskills update zraly/nette-agent-skills
 ```
 
 ### Manual Installation
@@ -106,7 +106,7 @@ openskills update zraly/nette-ai-skills
 If you installed manually using git clone:
 
 ```bash
-cd ~/nette-ai-skills  # or wherever you cloned the repository
+cd ~/nette-agent-skills  # or wherever you cloned the repository
 git pull
 ```
 

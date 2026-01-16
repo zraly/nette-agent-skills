@@ -17,7 +17,7 @@ The easiest way to install Nette skills:
 npm install -g openskills
 
 # Install Nette skills
-openskills install zraly/nette-ai-skills
+openskills install zraly/nette-agent-skills
 ```
 
 OpenSkills automatically configures skills for Cursor and keeps them updated.
@@ -36,7 +36,7 @@ mkdir -p .cursor/skills
 
 # Clone Nette skills
 cd .cursor/skills
-git clone https://github.com/zraly/nette-ai-skills nette
+git clone https://github.com/zraly/nette-agent-skills nette
 ```
 
 **Global Installation:**
@@ -49,7 +49,7 @@ mkdir -p ~/.cursor/skills
 
 # Clone Nette skills
 cd ~/.cursor/skills
-git clone https://github.com/zraly/nette-ai-skills nette
+git clone https://github.com/zraly/nette-agent-skills nette
 ```
 
 ## Verification
@@ -195,7 +195,7 @@ To get the latest Nette conventions:
 **If using OpenSkills:**
 
 ```bash
-openskills update zraly/nette-ai-skills
+openskills update zraly/nette-agent-skills
 ```
 
 **If using manual installation:**
@@ -281,7 +281,7 @@ Instead of cloning the entire repository, you can copy specific skills:
 ```bash
 mkdir -p ~/.cursor/skills
 cd ~/.cursor/skills
-git clone https://github.com/zraly/nette-ai-skills nette-temp
+git clone https://github.com/zraly/nette-agent-skills nette-temp
 
 # Copy only needed skills
 mkdir -p nette/skills
@@ -297,4 +297,4 @@ rm -rf nette-temp
 - [Cursor Documentation](https://cursor.com/docs)
 - [Nette Framework](https://nette.org)
 - [Source: nette/claude-code](https://github.com/nette/claude-code)
-- [All Skills](https://github.com/zraly/nette-ai-skills)
+- [All Skills](https://github.com/zraly/nette-agent-skills)

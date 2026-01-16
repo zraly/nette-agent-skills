@@ -20,7 +20,7 @@ The easiest way to install Nette skills:
 npm install -g openskills
 
 # Install Nette skills
-openskills install zraly/nette-ai-skills
+openskills install zraly/nette-agent-skills
 ```
 
 OpenSkills automatically configures skills for Antigravity and keeps them updated.
@@ -33,20 +33,20 @@ Skills must be placed directly in `~/.gemini/antigravity/skills/` for Antigravit
 
 ```bash
 # Clone the repository
-git clone https://github.com/zraly/nette-ai-skills ~/nette-ai-skills
+git clone https://github.com/zraly/nette-agent-skills ~/nette-agent-skills
 
 # Create symlinks for each skill
 cd ~/.gemini/antigravity/skills
-ln -s ~/nette-ai-skills/skills/* .
+ln -s ~/nette-agent-skills/skills/* .
 ```
 
 **Direct copy:**
 
 ```bash
 # Clone and copy skills directly
-git clone https://github.com/zraly/nette-ai-skills /tmp/nette-ai-skills
-cp -r /tmp/nette-ai-skills/skills/* ~/.gemini/antigravity/skills/
-rm -rf /tmp/nette-ai-skills
+git clone https://github.com/zraly/nette-agent-skills /tmp/nette-agent-skills
+cp -r /tmp/nette-agent-skills/skills/* ~/.gemini/antigravity/skills/
+rm -rf /tmp/nette-agent-skills
 ```
 
 ### Project-Specific Installation
@@ -55,13 +55,13 @@ For project-specific skills, symlink into `.agent/skills/`:
 
 ```bash
 # Clone the repository (if not already cloned)
-git clone https://github.com/zraly/nette-ai-skills ~/nette-ai-skills
+git clone https://github.com/zraly/nette-agent-skills ~/nette-agent-skills
 
 # Create project skills directory and symlink
 cd your-project
 mkdir -p .agent/skills
 cd .agent/skills
-ln -s ~/nette-ai-skills/skills/* .
+ln -s ~/nette-agent-skills/skills/* .
 ```
 
 ## Verification
@@ -124,13 +124,13 @@ To get the latest skills and best practices:
 **If using OpenSkills:**
 
 ```bash
-openskills update zraly/nette-ai-skills
+openskills update zraly/nette-agent-skills
 ```
 
 **If using symlinks:**
 
 ```bash
-cd ~/nette-ai-skills
+cd ~/nette-agent-skills
 git pull
 # Symlinks automatically point to updated files
 ```
@@ -139,9 +139,9 @@ git pull
 
 ```bash
 # Re-download and copy
-git clone https://github.com/zraly/nette-ai-skills /tmp/nette-ai-skills
-cp -r /tmp/nette-ai-skills/skills/* ~/.gemini/antigravity/skills/
-rm -rf /tmp/nette-ai-skills
+git clone https://github.com/zraly/nette-agent-skills /tmp/nette-agent-skills
+cp -r /tmp/nette-agent-skills/skills/* ~/.gemini/antigravity/skills/
+rm -rf /tmp/nette-agent-skills
 ```
 
 ## Folder Structure
@@ -207,7 +207,7 @@ cd ~/.gemini/antigravity/skills
 rm commit-messages nette-* php-* latte-templates frontend-development 2>/dev/null || true
 
 # Recreate
-ln -s ~/nette-ai-skills/skills/* .
+ln -s ~/nette-agent-skills/skills/* .
 ```
 
 **If using direct copy:**
@@ -217,7 +217,7 @@ cd ~/.gemini/antigravity/skills
 rm -rf commit-messages nette-* php-* latte-templates frontend-development
 
 # Recopy
-cp -r ~/nette-ai-skills/skills/* .
+cp -r ~/nette-agent-skills/skills/* .
 ```
 
 ## More Information

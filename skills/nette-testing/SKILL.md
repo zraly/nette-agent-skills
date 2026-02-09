@@ -1,6 +1,6 @@
 ---
 name: nette-testing
-description: Invoke before writing or modifying any .phpt test files. Provides Nette Tester conventions, Assert methods, and tester commands.
+description: Read this SKILL before running tests, evaluating test results, or writing/modifying any .phpt test files. Provides Nette Tester conventions, Assert methods, and tester commands.
 ---
 
 ## Testing with Nette Tester
@@ -100,7 +100,16 @@ vendor/bin/tester tests/common/Engine.phpt -s
 vendor/bin/tester tests/filters/ -s
 ```
 
-Static Analysis & Code Quality using PHPStan
+### Test Output Directory
+
+When a test fails, Nette Tester writes the expected and actual output into an `output` directory next to the test files (e.g. `tests/Tracy/output/`). For each failing test `Foo.phpt`, you will find:
+
+- `Foo.expected` — what the test expected to see
+- `Foo.actual` — what was actually produced
+
+**Always look at these files first** when investigating test failures. Comparing `.expected` vs `.actual` shows the exact difference and is much more informative than the short failure message printed by the runner.
+
+### Static Analysis & Code Quality using PHPStan
 
 ```bash
 # Run PHPStan static analysis

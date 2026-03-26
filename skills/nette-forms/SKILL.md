@@ -1,6 +1,6 @@
 ---
 name: nette-forms
-description: Invoke before creating or modifying Nette Forms. Provides form controls, validation, rendering patterns.
+description: Provides Nette Forms controls, validation rules, rendering, and form patterns. Use this skill whenever the user works with Nette forms, including: creating forms in presenters (createComponent* factory methods), adding form controls (addText, addEmail, addPassword, addSelect, addCheckboxList, addRadioList, addUpload, addTextArea, addInteger, addDate, addHidden, addContainer), setting validation rules (setRequired, addRule, addConditionOn, MinLength, MaxLength, Range, Pattern, Equal), handling form events (onSuccess, onSubmit, onValidate, onRender), rendering forms in Latte templates ({form}, {input}, {label}, {inputError} tags with custom CSS classes like Bootstrap), building form factories for reuse across presenters, implementing create/edit patterns, handling form errors (addError on form or individual controls), working with multi-step wizard forms, or using dynamic containers (addContainer, Multiplier). Also trigger when user mentions form submission handling, CSRF protection in forms, or $form/$data parameters in PHP code within a Nette application context. Do not trigger for Nette\Schema\Expect validation (use nette-schema), service registration of form factories in .neon (use nette-configuration), or plain PHP forms without Nette framework.
 ---
 
 ## Nette Forms
@@ -192,7 +192,7 @@ protected function createComponentProductForm(): Form
 | `addSubmit($name, $caption)` | Submit button |
 | `addButton($name, $caption)` | Button |
 
-For complete control reference, see [controls.md](controls.md).
+See [the complete control reference](references/controls.md) for all form controls.
 
 ### Basic Validation
 
@@ -218,7 +218,7 @@ $form->addPassword('password2')
 	->addRule($form::Equal, 'Passwords must match', $form['password']);
 ```
 
-For complete validation reference, see [validation.md](validation.md).
+See [the complete validation reference](references/validation.md) for all rules and conditions.
 
 ### Conditional Validation
 
@@ -265,7 +265,7 @@ $form->addEmail('email')
 {/form}
 ```
 
-For complete rendering reference, see [rendering.md](rendering.md).
+See [the complete rendering reference](references/rendering.md) for all rendering options.
 
 ### Form Events
 

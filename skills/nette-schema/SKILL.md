@@ -1,6 +1,13 @@
 ---
 name: nette-schema
-description: Provides Nette Schema for data validation and normalization. Use when validating configuration, API inputs, or any data structures with Expect class.
+description: >
+  Provides the nette/schema library reference for defining and building data validation schemas with the Expect class.
+  Use this skill whenever the user wants to define expected data shapes using Expect::structure(), validate config arrays
+  or API inputs against a schema with Processor, map validated data to DTO classes with castTo(), choose between Expect
+  methods (anyOf, arrayOf, listOf, assert, transform), generate schemas from PHP classes with Expect::from(), or handle
+  extra/unknown keys with otherItems(). This is specifically about the nette/schema package and the Expect fluent API —
+  not about Nette Forms validation (addRule), not Nette\Utils\Validators, not NEON file syntax, and not JSON Schema or
+  other validation frameworks.
 ---
 
 ## Nette Schema

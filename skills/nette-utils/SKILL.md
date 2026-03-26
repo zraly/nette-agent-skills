@@ -1,6 +1,6 @@
 ---
 name: nette-utils
-description: Provides Nette Utils helper classes. Use when working with arrays, strings, files, images, JSON, validators, DateTime, or other utility functions.
+description: "Provides Nette\\Utils helper classes: Arrays (get, getRef, flatten, mergeTree), Strings (truncate, webalize, match, replace), Image (resize, crop, sharpen, save as WebP/JPEG/PNG), Finder (recursive file search with filters), FileSystem (read, write, copy, delete, path utilities), Json (safe encode/decode with HTML escaping), Validators (isEmail, isUrl, type checking with ranges), DateTime (immutable modify, fromParts), Html (programmatic element builder), Random (secure token generation), Callback, Type, and SmartObject. Use this skill whenever the user works with nette/utils classes, asks about array manipulation with Nette helpers, string processing like slugification or truncation, image resizing or format conversion in PHP, file searching or filesystem operations in Nette, safe JSON handling, input validation (email, URL, type ranges), date/time manipulation with Nette DateTime, or generating random strings/tokens. Do NOT use for Nette Schema (Expect class), Nette Forms validation rules, Nette Database queries, Latte template filters, or DI container configuration."
 ---
 
 ## Nette Utils
@@ -12,10 +12,10 @@ composer require nette/utils
 ```
 
 For detailed references:
-- [arrays.md](arrays.md) - Arrays, ArrayHash, ArrayList
-- [strings.md](strings.md) - Strings and regex functions
-- [image.md](image.md) - Image manipulation
-- [finder.md](finder.md) - File searching
+- [Arrays, ArrayHash, ArrayList](references/arrays.md)
+- [Strings and regex functions](references/strings.md)
+- [Image manipulation](references/image.md)
+- [File searching with Finder](references/finder.md)
 
 ---
 

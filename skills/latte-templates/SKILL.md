@@ -1,6 +1,6 @@
 ---
 name: latte-templates
-description: Invoke before creating or modifying .latte files. Provides Latte syntax, tags, filters, layouts, and extensions.
+description: Invoke before creating or modifying .latte files. Provides Latte templating engine syntax, tags, filters, layouts, blocks, template inheritance, and extensions. Use this skill whenever the user works with Latte templates, including: writing or editing .latte files, using Latte syntax ({if}, {foreach}, {block}, {include}, {snippet}, {control}, {define}, n:attributes like n:href, n:if, n:class, n:foreach), applying filters (|truncate, |date, |number, |noescape), building layouts with {layout} and {block}, creating template partials, debugging AJAX snippets in templates, setting up {templateType} or template classes, writing Latte extensions with custom filters/functions, using {form}/{input}/{label} tags for rendering Nette forms in templates, or linking with n:href/n:tag-if. Also trigger when user mentions Latte by name even without referencing .latte files directly.
 ---
 
 ## Latte Templating System
@@ -46,7 +46,7 @@ Filters modify output, written after `|`:
 
 Common filters: `upper`, `lower`, `capitalize`, `truncate`, `number`, `date`, `noescape`, `escapeUrl`, `stripHtml`, `trim`, `replace`, `first`, `last`, `length`, `sort`, `reverse`
 
-For complete filter reference, see [filters.md](filters.md).
+See [the complete filter reference](references/filters.md) for all available filters.
 
 ### n:attributes
 
@@ -203,7 +203,7 @@ Pair tags can be written as HTML attributes:
 | `{php code}` | Raw PHP (needs extension) |
 | `{dump $var}` | Debug dump (Tracy) |
 
-For complete tag reference, see [tags.md](tags.md).
+See [the complete tag reference](references/tags.md) for all available tags.
 
 ### Smart HTML Attributes
 

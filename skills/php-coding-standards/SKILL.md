@@ -1,6 +1,6 @@
 ---
 name: php-coding-standards
-description: Invoke BEFORE writing PHP code. Provides coding standards and naming conventions.
+description: Invoke BEFORE writing or modifying any PHP code. This skill is essential for PHP coding standards, naming conventions, formatting rules (TABs, single quotes, PSR-12 modifications), strict_types declarations, use statement ordering, and Nette Coding Standard compliance. Use this skill whenever creating new PHP classes, interfaces, traits, enums, methods, or functions, refactoring existing PHP code, fixing PHP bugs, or adding PHP features. Also consult when unsure about naming (PascalCase for classes/constants, camelCase for methods/properties), global function imports, or the auto-fixer editing workflow.
 ---
 
 ## PHP Coding Standards

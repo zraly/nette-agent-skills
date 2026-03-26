@@ -1,6 +1,6 @@
 ---
 name: commit-messages
-description: Invoke BEFORE committing changes
+description: Invoke BEFORE committing changes. Provides commit message conventions: lowercase, past tense verbs ("added", "fixed"), subject:description format, patterns for releases, deprecations, BC breaks, and maintenance commits (cs, vendor, typos). Use this skill whenever the user wants to commit, create a commit message, stage and commit, use /commit, tag a release, or discuss commit message style and formatting.
 ---
 
 ## Commit Message Style

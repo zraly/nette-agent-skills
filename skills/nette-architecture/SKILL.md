@@ -1,9 +1,9 @@
 ---
 name: nette-architecture
-description: Invoke before designing presenters, modules, or application structure in web application.
+description: Invoke before designing presenters, modules, or application structure in Nette web application. Use this skill whenever the user asks about directory structure (app/ folder organization, where to put files), presenter organization (splitting into modules, creating Admin/Front/Api modules, BasePresenter strategy), domain-driven code placement (Core/ vs Model/ decision, service placement, entity organization), the #[Requires] attribute for action/signal access control, passing settings to presenters via DI, CLI task organization (app/Tasks/), Accessory and component placement, project skeleton setup, or refactoring from technical-layer to domain-driven structure. Also trigger when the user is starting a new Nette project or deciding how to grow an existing project's architecture.
 ---
 
-For new project skeleton, see [skeleton.md](skeleton.md).
+For new projects, see [the project skeleton reference](references/skeleton.md).
 
 ## Backend Architecture
 

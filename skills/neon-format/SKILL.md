@@ -1,6 +1,6 @@
 ---
 name: neon-format
-description: Invoke before creating or modifying .neon files. Provides NEON syntax and Nette configuration conventions.
+description: Invoke before creating or modifying .neon files. Provides NEON syntax and Nette configuration conventions. Use this skill whenever the user works with NEON format - writing or editing .neon config files, asking about NEON syntax (entities, multiline strings, inline notation, special values, escaping), converting YAML to NEON, parsing or encoding NEON in PHP (Neon::decode, Neon::encode), running neon-lint, or debugging NEON syntax errors. Do not trigger for phpstan.neon (use phpstan-analysis instead) or for Nette DI concepts like autowiring and service registration without .neon file context.
 ---
 
 ## NEON Format

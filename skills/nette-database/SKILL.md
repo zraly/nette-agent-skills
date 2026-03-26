@@ -1,6 +1,6 @@
 ---
 name: nette-database
-description: Invoke before writing database queries or working with Selection API, ActiveRow in Nette.
+description: Invoke before writing database queries, creating entity classes (*Row), configuring database connections, or working with Nette Database Explorer (Selection API, ActiveRow, relationships, fetching strategies). Use this skill whenever the user mentions database tables, SQL queries, database schema/migrations, $db->table(), $db->query(), fetchPairs, fetchAssoc, colon notation for joins, UniqueConstraintViolationException, multiple database connections, or entity/Row class design in a Nette project. Also consult when deciding between Selection API and raw SQL, or when setting up database configuration options (lazy, convertBoolean, newDateTime) in .neon files.
 ---
 
 ## Database
@@ -11,8 +11,8 @@ Uses Nette Database with MySQL 8.4+ as the backend.
 composer require nette/database
 ```
 
-For complete Explorer API, see [explorer.md](explorer.md).
-For SQL queries, see [sql-way.md](sql-way.md).
+See [the Explorer API reference](references/explorer.md) for the full ActiveRow/Selection API.
+See [the SQL query reference](references/sql-way.md) for direct SQL queries.
 
 ### Database Conventions
 

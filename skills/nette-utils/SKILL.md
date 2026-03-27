@@ -1,6 +1,6 @@
 ---
 name: nette-utils
-description: "Provides Nette\\Utils helper classes: Arrays (get, getRef, flatten, mergeTree), Strings (truncate, webalize, match, replace), Image (resize, crop, sharpen, save as WebP/JPEG/PNG), Finder (recursive file search with filters), FileSystem (read, write, copy, delete, path utilities), Json (safe encode/decode with HTML escaping), Validators (isEmail, isUrl, type checking with ranges), DateTime (immutable modify, fromParts), Html (programmatic element builder), Random (secure token generation), Callback, Type, and SmartObject. Use this skill whenever the user works with nette/utils classes, asks about array manipulation with Nette helpers, string processing like slugification or truncation, image resizing or format conversion in PHP, file searching or filesystem operations in Nette, safe JSON handling, input validation (email, URL, type ranges), date/time manipulation with Nette DateTime, or generating random strings/tokens. Do NOT use for Nette Schema (Expect class), Nette Forms validation rules, Nette Database queries, Latte template filters, or DI container configuration."
+description: Provides Nette Utils helper classes. Use when working with Arrays (get, flatten, mergeTree), Strings (truncate, webalize, match, replace), Image (resize, crop, save as WebP/JPEG/PNG), Finder (recursive file search), FileSystem (read, write, copy, path utilities), Json (safe encode/decode), Validators (isEmail, isUrl, type checking), DateTime (immutable modify, fromParts), Html element builder, Random token generation, Callback, Type, or SmartObject. Do NOT use for Nette Schema, Nette Forms, Nette Database, Latte filters, or DI configuration.
 ---
 
 ## Nette Utils
@@ -129,7 +129,7 @@ FileSystem::write('/path/to/file', $content);
 
 // Read large files line by line
 foreach (FileSystem::readLines('/path/to/file') as $line) {
-    echo $line;
+	echo $line;
 }
 
 // Copy/Move/Delete
@@ -223,10 +223,10 @@ echo $el;  // <a href="https://nette.org">Nette</a>
 
 // Fluent interface
 $el = Html::el('div')
-    ->id('container')
-    ->class('main active')
-    ->data('id', 123)
-    ->setHtml('<p>Content</p>');
+	->id('container')
+	->class('main active')
+	->data('id', 123)
+	->setHtml('<p>Content</p>');
 
 // Shorthand
 Html::el('input', ['type' => 'text', 'name' => 'email']);
@@ -294,19 +294,19 @@ use Nette\SmartObject;
 
 class MyClass
 {
-    use SmartObject;
+	use SmartObject;
 
-    private string $name;
+	private string $name;
 
-    public function getName(): string
-    {
-        return $this->name;
-    }
+	public function getName(): string
+	{
+		return $this->name;
+	}
 
-    public function setName(string $name): void
-    {
-        $this->name = $name;
-    }
+	public function setName(string $name): void
+	{
+		$this->name = $name;
+	}
 }
 
 $obj = new MyClass;
@@ -314,18 +314,14 @@ $obj->name = 'John';    // calls setName()
 echo $obj->name;        // calls getName()
 ```
 
----
+### Online Documentation
 
-## Online Documentation
+For detailed information, use WebFetch on these URLs:
 
-For detailed information, fetch from doc.nette.org:
-
-- [Utils](https://doc.nette.org/en/utils/)
-- [Arrays](https://doc.nette.org/en/utils/arrays)
-- [Strings](https://doc.nette.org/en/utils/strings)
-- [DateTime](https://doc.nette.org/en/utils/datetime)
-- [FileSystem](https://doc.nette.org/en/utils/filesystem)
-- [Finder](https://doc.nette.org/en/utils/finder)
-- [Images](https://doc.nette.org/en/utils/images)
-- [JSON](https://doc.nette.org/en/utils/json)
-- [Validators](https://doc.nette.org/en/utils/validators)
+- [Arrays](https://doc.nette.org/en/utils/arrays) – array helpers
+- [Strings](https://doc.nette.org/en/utils/strings) – string functions and regex
+- [Images](https://doc.nette.org/en/utils/images) – image manipulation
+- [FileSystem](https://doc.nette.org/en/utils/filesystem) – file operations
+- [Finder](https://doc.nette.org/en/utils/finder) – file searching
+- [JSON](https://doc.nette.org/en/utils/json) – safe JSON handling
+- [Validators](https://doc.nette.org/en/utils/validators) – type checking and validation

@@ -1,6 +1,6 @@
 ---
 name: latte-templates
-description: Invoke before creating or modifying .latte files. Provides Latte templating engine syntax, tags, filters, layouts, blocks, template inheritance, and extensions. Use this skill whenever the user works with Latte templates, including: writing or editing .latte files, using Latte syntax ({if}, {foreach}, {block}, {include}, {snippet}, {control}, {define}, n:attributes like n:href, n:if, n:class, n:foreach), applying filters (|truncate, |date, |number, |noescape), building layouts with {layout} and {block}, creating template partials, debugging AJAX snippets in templates, setting up {templateType} or template classes, writing Latte extensions with custom filters/functions, using {form}/{input}/{label} tags for rendering Nette forms in templates, or linking with n:href/n:tag-if. Also trigger when user mentions Latte by name even without referencing .latte files directly.
+description: Invoke before creating or modifying .latte files. Provides Latte syntax, tags, filters, layouts, and extensions. Use when working with .latte files, Latte syntax ({if}, {foreach}, {block}, {include}, {snippet}, {control}, {define}, n:attributes), filters (|truncate, |date, |number, |noescape), layouts with {layout} and {block}, template partials, AJAX snippets, {templateType}, template classes, Latte extensions, {form}/{input}/{label} rendering, or n:href links. Also trigger when user mentions Latte by name.
 ---
 
 ## Latte Templating System
@@ -200,7 +200,7 @@ Pair tags can be written as HTML attributes:
 | `{block name}...{/block}` | Define block |
 | `{layout 'file'}` | Extend layout |
 | `{do expression}` | Execute without output |
-| `{php code}` | Raw PHP (needs extension) |
+| `{php expression}` | Execute PHP expression |
 | `{dump $var}` | Debug dump (Tracy) |
 
 See [the complete tag reference](references/tags.md) for all available tags.
@@ -267,6 +267,28 @@ Admin/
 - `@layout.latte` - layout templates
 - `@form.latte` - reusable form structures
 - `@item.latte` - list item templates
+
+### Passing Variables to Templates
+
+The standard way is assigning to `$this->template`:
+
+```php
+$this->template->article = $this->articles->getById($id);
+```
+
+For properties that should always be available in templates, use the `#[TemplateVariable]` attribute (requires public or protected visibility) instead of repeating assignments in every action:
+
+```php
+use Nette\Application\Attributes\TemplateVariable;
+
+class ArticlePresenter extends Nette\Application\UI\Presenter
+{
+	#[TemplateVariable]
+	public string $siteName = 'My blog';
+}
+```
+
+The property value is automatically passed as `$siteName` in every template. If you explicitly assign `$this->template->siteName` in an action, the explicit value wins.
 
 ### Template Class Strategy
 
@@ -362,37 +384,26 @@ final class LatteExtension extends Latte\Extension
 
 ```neon
 latte:
+	strictParsing: yes
 	extensions:
 		- App\Presentation\Accessory\LatteExtension
 ```
 
-### Latte Configuration
-
-```neon
-latte:
-	strictParsing: yes
-	locale: cs
-```
+Enable `strictParsing` to catch template errors early (missing variables, typos in tag names).
 
 ### Anti-Patterns to Avoid
 
-- **Don't put business logic in templates** - templates display data, don't process it
-- **Don't create deep template hierarchies** - prefer composition over inheritance
-- **Don't duplicate template code** - extract to partials or components
+- **Don't put business logic in templates** – templates display data, they don't process it. Calculations, filtering, and data transformations belong in presenters or services. Complex template logic is a sign that the presenter's `render*` method isn't preparing data well enough.
+- **Don't create deep template hierarchies** – more than 2 levels of `{layout}` inheritance becomes hard to debug. Prefer `{include}` and `{define}` for composition over deep inheritance chains.
+- **Don't duplicate template code** – if the same HTML structure appears in multiple templates, extract it to a `{define}` block or a partial template (`@item.latte`). Duplication causes inconsistency when one copy gets updated but not the others.
 
----
+### Online Documentation
 
-## Online Documentation
+For detailed information, use WebFetch on these URLs:
 
-For detailed information beyond this reference, fetch from latte.nette.org:
-
-- [Syntax](https://latte.nette.org/en/syntax) - complete syntax guide with examples
-- [Tags](https://latte.nette.org/en/tags) - all available tags in detail
-- [Filters](https://latte.nette.org/en/filters) - all filters with usage examples
-- [Template Inheritance](https://latte.nette.org/en/template-inheritance) - layouts, blocks, embed
-- [Functions](https://latte.nette.org/en/functions) - built-in functions
-- [Extending Latte](https://latte.nette.org/en/extending-latte) - custom tags, filters, extensions
-- [Type System](https://latte.nette.org/en/type-system) - template types and IDE support
-- [Safety First](https://latte.nette.org/en/safety-first) - security and escaping
-
-When you need more details about a specific Latte feature not covered in this skill, use WebFetch to retrieve information from these URLs.
+- [Syntax](https://latte.nette.org/en/syntax) – complete syntax guide
+- [Tags](https://latte.nette.org/en/tags) – all available tags
+- [Filters](https://latte.nette.org/en/filters) – all filters with examples
+- [Template Inheritance](https://latte.nette.org/en/template-inheritance) – layouts, blocks, embed
+- [Extending Latte](https://latte.nette.org/en/extending-latte) – custom tags, filters, extensions
+- [Type System](https://latte.nette.org/en/type-system) – template types and IDE support

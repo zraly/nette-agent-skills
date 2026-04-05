@@ -1,6 +1,6 @@
 ---
 name: nette-utils
-description: Provides Nette Utils helper classes. Use when working with Arrays (get, flatten, mergeTree), Strings (truncate, webalize, match, replace), Image (resize, crop, save as WebP/JPEG/PNG), Finder (recursive file search), FileSystem (read, write, copy, path utilities), Json (safe encode/decode), Validators (isEmail, isUrl, type checking), DateTime (immutable modify, fromParts), Html element builder, Random token generation, Callback, Type, or SmartObject. Do NOT use for Nette Schema, Nette Forms, Nette Database, Latte filters, or DI configuration.
+description: Provides Nette Utils helper classes. Use when working with Arrays, Strings, Image, Finder, FileSystem, Json, Validators, DateTime, Html element builder, Random, Callback, Type, or SmartObject from nette/utils. Do NOT use for Nette Schema, Nette Forms, Nette Database, Latte filters, or DI configuration.
 ---
 
 ## Nette Utils

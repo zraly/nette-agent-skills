@@ -1,6 +1,6 @@
 ---
 name: nette-forms
-description: Invoke before creating or modifying Nette Forms. Provides form controls, validation, rendering patterns. Use when working with createComponent* form factories, addText/addEmail/addSelect/addUpload/addCheckboxList controls, validation rules (setRequired, addRule, addConditionOn), form events (onSuccess, onSubmit, onValidate), rendering in Latte ({form}, {input}, {label}, {inputError}), Bootstrap integration, form factories for reuse, create/edit patterns, addContainer, or form error handling (addError). Also trigger for $form/$data in Nette context.
+description: Invoke before creating or modifying Nette Forms. Provides form controls, validation, rendering patterns. Use when working with form factories, form controls, validation rules, form events, rendering forms in Latte, Bootstrap integration, form containers, or form error handling. Also trigger for $form/$data in Nette context.
 ---
 
 ## Nette Forms

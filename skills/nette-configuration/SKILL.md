@@ -1,6 +1,6 @@
 ---
 name: nette-configuration
-description: Invoke before configuring Nette DI – services, .neon files, autowiring. Provides service registration in services.neon, autowiring, search auto-discovery, factory methods, setup methods, named services with @references, %parameter% usage, passing settings to presenters/services, decorator section, and framework configuration (application mapping, errorPresenter, http, session, security) in common.neon. Also trigger for resolving autowiring issues or organizing config files.
+description: Invoke before configuring Nette DI – services, .neon files, autowiring. Provides service registration, autowiring, auto-discovery, factory and setup methods, parameter usage, decorator section, and framework configuration. Also trigger for resolving autowiring issues or organizing config files.
 ---
 
 ## Nette DI & Services Guidelines

@@ -1,6 +1,6 @@
 ---
 name: latte-templates
-description: Invoke before creating or modifying .latte files. Provides Latte syntax, tags, filters, layouts, and extensions. Use when working with .latte files, Latte syntax ({if}, {foreach}, {block}, {include}, {snippet}, {control}, {define}, n:attributes), filters (|truncate, |date, |number, |noescape), layouts with {layout} and {block}, template partials, AJAX snippets, {templateType}, template classes, Latte extensions, {form}/{input}/{label} rendering, or n:href links. Also trigger when user mentions Latte by name.
+description: Invoke before creating or modifying .latte files, even for single-line changes. Provides Latte syntax, tags, filters, n:attributes, layouts, template inheritance, AJAX snippets, extensions, and Nette integration. Also trigger when user mentions Latte by name.
 ---
 
 ## Latte Templating System
@@ -31,6 +31,19 @@ composer require latte/latte
 {='hello'|upper}           {* expression with filter *}
 {$html|noescape}           {* disable escaping (use carefully!) *}
 ```
+
+Latte uses **context-aware escaping** — output adapts to where the variable is printed. In `<script>` context, arrays and objects are automatically serialized to JSON:
+
+```latte
+{* Arrays auto-serialize to JSON inside <script> *}
+<script type="application/ld+json">{$schemaData}</script>
+
+<script>
+	let config = {$config};
+</script>
+```
+
+Never use `json_encode()` in PHP + `|noescape` for this — Latte handles serialization and escaping safely on its own.
 
 ### Filters
 

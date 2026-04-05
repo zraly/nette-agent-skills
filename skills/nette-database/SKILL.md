@@ -1,6 +1,6 @@
 ---
 name: nette-database
-description: Invoke before writing database queries or working with Selection API, ActiveRow in Nette. Use when creating entity classes (*Row), configuring database connections, using $db->table(), $db->query(), fetchPairs, fetchAssoc, colon notation for joins, UniqueConstraintViolationException, or entity/Row class design. Also consult when deciding between Selection API and raw SQL, or setting up database configuration (lazy, convertBoolean, newDateTime) in .neon files.
+description: Invoke before writing database queries or working with Selection API, ActiveRow in Nette. Use when creating entity classes, configuring database connections, writing queries, fetching data, using joins, or designing Row classes. Also consult when deciding between Selection API and raw SQL, or setting up database configuration in .neon files.
 ---
 
 ## Database

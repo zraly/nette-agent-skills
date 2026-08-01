@@ -21,7 +21,10 @@ For detailed references:
 
 ## DateTime
 
-Extended `DateTime` class with strict validation and DST fixes.
+Extended `DateTime` class with strict validation and DST fixes. There is also
+`Nette\Utils\DateTimeImmutable` (since 4.1.5) with the same API on top of
+`\DateTimeImmutable` — **prefer it for new code**, mutable date objects are a classic source of
+action-at-a-distance bugs.
 
 ```php
 use Nette\Utils\DateTime;
@@ -63,7 +66,7 @@ $json = Json::encode($data, forceObjects: true);  // arrays as objects
 
 // Decode
 $data = Json::decode($json);                    // returns stdClass
-$data = Json::decode($json, forceArray: true);  // returns array
+$data = Json::decode($json, forceArrays: true); // returns array (note the plural)
 
 // Both throw Nette\Utils\JsonException on error
 ```
@@ -233,7 +236,44 @@ Html::el('input', ['type' => 'text', 'name' => 'email']);
 Html::el('div class="box"');  // from string
 ```
 
+**Escaping is explicit and it is the one thing to get right here.** `setText()` / `addText()`
+escape, `setHtml()` / `addHtml()` do not — reach for the `Html` variants only when the string
+is provably safe. `add()` escapes strings but inserts `Html` objects as they are.
+
+`class` and `style` behave as arrays, which is what makes conditional markup readable —
+a `null` item is skipped, so no `if` is needed around it:
+
+```php
+$el->class[] = 'active';
+$el->class[] = $isTop ? 'top' : null;   // null is ignored
+$el->style['color'] = 'green';
+$el->data('config', ['a' => 1]);        // array is JSON-encoded
+```
+
 ---
+
+## Process
+
+Running external processes (since 4.1.4) — use this instead of `exec()`, `shell_exec()` or
+pulling in `symfony/process`.
+
+```php
+use Nette\Utils\Process;
+
+// No shell involved, arguments are passed as an array -> nothing to escape
+$p = Process::runExecutable('git', ['log', '-1', '--format=%H']);
+$p->ensureSuccess();              // returns void, do not chain
+echo $p->getStdOutput();          // note the capital O
+
+// Shell string: convenient for pipes, NEVER build it from untrusted input
+$p = Process::runCommand('git log --oneline | head -n 20');
+```
+
+Both take `$env`, `$options`, `$stdin`, `$stdout`, `$stderr`, `$directory` and `$timeout`
+(default 60 s) — with that many parameters, pass them as named arguments
+(`timeout: 30`). Instance methods: `wait()`, `isRunning()`, `getExitCode()`, `isSuccess()`,
+`ensureSuccess()`, `getStdOutput()`, `getStdError()`, `terminate()`, `detach()`, `getPid()`.
+Reading output throws if it was redirected, discarded or piped instead of captured.
 
 ## Callback
 
@@ -242,16 +282,20 @@ Working with PHP callables.
 ```php
 use Nette\Utils\Callback;
 
-// Normalize to closure
-$closure = Callback::closure($callable);
-$closure = Callback::closure($obj, 'method');
-$closure = Callback::closure('Class::method');
+// Normalize to closure – use PHP itself, there is no Callback::closure() in Utils 4
+$closure = $callable(...);
+$closure = $obj->method(...);
 
 // Check validity
 Callback::check($callable);  // throws if invalid
 
-// Invoke with exception wrapping
-Callback::invokeSafe($callable, $args, $onError);
+// Invoke a native function and turn its warnings into an exception.
+// First argument is a function NAME, not a callable; the handler gets (string $message, int $severity).
+Callback::invokeSafe(
+	'preg_match',
+	[$pattern, $subject],
+	fn(string $message) => throw new \RuntimeException($message),
+);
 
 // Reflection
 $reflection = Callback::toReflection($callable);
@@ -278,8 +322,8 @@ $type->getSingleName();     // 'int' or null if union
 $type->getNames();          // ['int', 'string', 'null']
 $type->isUnion();           // true
 $type->isIntersection();    // false
-$type->isBuiltin();         // true
-$type->allowsNull();        // true
+$type->isBuiltin();         // false – only true for a SINGLE built-in type
+$type->allows('null');      // true – there is no allowsNull() method
 $type->isClass();           // false
 ```
 
@@ -287,11 +331,19 @@ $type->isClass();           // false
 
 ## SmartObject Trait
 
-Modern PHP object features for classes.
+Getter/setter property access for classes. Its historical jobs are done by PHP itself now;
+for new code prefer PHP 8.4 property hooks. The trait is still useful for exposing
+getters as read-only properties.
+
+**The `@property` annotation is mandatory** – without it the magic access throws
+`MemberAccessException`, because the trait only maps properties declared in the docblock.
 
 ```php
 use Nette\SmartObject;
 
+/**
+ * @property string $name
+ */
 class MyClass
 {
 	use SmartObject;

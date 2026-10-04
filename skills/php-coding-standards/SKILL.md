@@ -33,6 +33,7 @@ Install globally using `/php-fixer:install-php-fixer`. After installation, PHP f
 - Never let a method name be a bare noun - a method is an action: `getProvider()`, not `provider()`. A verb is the usual form; the exceptions are settled conventions, namely static factories (`fromFile()`), conversions (`toArray()`), interface methods (`jsonSerialize()`) and fluent interfaces whose names echo the domain rather than an action, as a query builder echoes SQL clauses
 - PascalCase for classes and class constants/enums
 - camelCase for methods and properties
+- Boolean query methods are `is*`/`has*`/`can*`; a boolean property is named by the state itself (`$active`), never `$isActive`
 - Never use prefixes/suffixes like `Abstract`, `Interface`, or `I` - the type system already distinguishes them
 
 ### Method Order
@@ -77,3 +78,7 @@ public function example(
 - Place interface/base class outside the namespace containing its implementations (e.g., `Foo\Network` next to `Foo\Networks\*`, not inside it) - this keeps the interface discoverable at the package level
 - For structured data, prefer typed classes (DTOs) with public typed properties and default values over plain `array`. Arrays lose type information; typed objects let PHPStan catch errors at analysis time and give full IDE support.
 - Don't add comments referencing specific bug fixes, issues, or tickets ("fixes #123", "workaround for bug X", "added in PR #456"). Only write comments with general validity that explain non-obvious logic any reader would benefit from. Git history provides the fix-specific context and doesn't rot over time.
+
+### Documentation
+
+The full [Nette Coding Standard](../../docs/contributing/coding-standard.md) is bundled with the plugin; read it for rules this skill does not cover.

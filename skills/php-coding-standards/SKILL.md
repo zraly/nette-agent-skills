@@ -1,24 +1,37 @@
 ---
 name: php-coding-standards
-description: 'Invoke BEFORE writing or modifying any PHP code. Provides coding standards and naming conventions for Nette repos: TABs, single quotes, strict_types, PSR-12 modifications, use statement ordering. Use this whenever creating, modifying, or refactoring any PHP code - even small bug fixes or one-line changes.'
+description: 'Invoke BEFORE writing or modifying any PHP code. Provides coding standards and naming conventions for Nette repos: TABs, single quotes, strict_types, PER Coding Style modifications, use statement ordering. Use this whenever creating, modifying, or refactoring any PHP code - even small bug fixes or one-line changes.'
 ---
 
 ## PHP Coding Standards
 
-### Using nette/coding-standard
+### Using DressCode
 
-Install globally using `/php-fixer:install-php-fixer`. After installation, PHP files are automatically fixed when edited - see the `php-auto-fixer` skill for editing workflow rules (especially `use` statement ordering).
+The Nette repositories are checked by [DressCode](https://github.com/dg/dresscode) with the `dresscode.neon` in their root. Install it globally using `/php-fixer:install-php-fixer`; after that, PHP files are automatically fixed when edited, by that configuration - see the `php-auto-fixer` skill for editing workflow rules (especially `use` statement ordering).
 
 ### General Rules
 - Every PHP file must include `declare(strict_types=1)`
 - Use two empty lines between methods - Nette convention for visual separation in longer classes
-- Document shut-up operator use: `@mkdir($dir); // @ - directory may already exist`
-- Document weak comparison operators: `// == accept null`
+- Every `@`, `==` and `!=` carries a comment saying it is deliberate, see below
 - Multiple exceptions can be written in a single `exceptions.php` file, and multiple enums into `enums.php`
 - Interface methods don't need visibility as they're always public
 - All properties, return values, and parameters must have types
 - Final constants don't need types as they're self-evident
 - Write all code, comments, and variables in English only (even if communicating with the user in Czech)
+
+### Comments for `@`, `==` and `!=`
+
+DressCode reports these operators unless their line ends with a comment in exactly this form:
+
+```php
+@unlink($tmp); // @ file may not exist
+$content = @file_get_contents($file); // @ is escalated to exception
+if ($v != null) { // intentionally !=, skips null and empty string
+```
+
+- `// @ <reason>`: the concrete cause and why it is harmless (a file that may not exist, a disabled function), never a vague `may trigger error`; lower case, no dash, colon or full stop. `is escalated to exception` only where the code really checks the result and throws
+- `// intentionally ==` or `// intentionally !=`, the operator being the one on the line; a reason after a comma only where the intent is not obvious
+- The comment goes on the line holding the operator, one per line
 
 ### Strings
 - Use single quotes - they signal "no interpolation here," making code easier to scan
@@ -45,7 +58,7 @@ Install globally using `/php-fixer:install-php-fixer`. After installation, PHP f
 
 ### Formatting
 - Use TABs for indentation everywhere (PHP, JS, HTML, CSS/SCSS, NEON, Latte, ...)
-- PHP follows Nette Coding Standard (based on PSR-12) with these modifications:
+- PHP follows the Nette coding standard (PER Coding Style) with these modifications:
   - No space before parentheses in arrow functions: `fn($a) => $b`
   - No blank lines required between different `use` import types
   - When parameters span multiple lines, return type and opening brace go on separate lines:
@@ -69,6 +82,7 @@ public function example(
 
 ### Global Functions and Constants
 - Write global functions/constants without leading backslash: `count($arr)` not `\count($arr)`
+- Leave `use function` and `use const` imports to DressCode, which adds and removes them
 
 ### Code Style Preferences
 - Uses DOM API with HTML5 parser Lexbor for HTML processing
